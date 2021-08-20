@@ -1,6 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "linkedList.h"
-
 
 
 int main(void) {
@@ -18,14 +18,10 @@ int main(void) {
     //append(head, "hi");
     //prepend(&head, "souse");
     add(head, "added element", 1);
+    pop(&head, 1);
+    pop(&head, 1);
     printLinkedList(head);
 
 
-    node_t * new_head = reverse(head);
-    printf("\n");
-    printf("%p\n", new_head);
-    printLinkedList(new_head);
-
-
-    return 0;
+    return EXIT_SUCCESS;
 }

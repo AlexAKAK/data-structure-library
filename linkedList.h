@@ -137,7 +137,29 @@ node_t * reverse(node_t * head)
 
 
 
+void pop(node_t ** head_dp, unsigned int index) {
 
+    if (index >= len(*head_dp)) return;
+
+    if (index == 0) {
+        *head_dp =  get_node_p(*head_dp, index + 1); // the head becomes the element at index 1;
+        return;
+    }
+
+    if (index == len(*head_dp) - 1) {
+        get_node_p(*head_dp, len(*head_dp) - 2)->next = NULL;
+        return;
+    }
+
+    node_t * prevNode = get_node_p(*head_dp, index - 1);
+    node_t * nextNode = get_node_p(*head_dp, index + 1);
+
+    prevNode->next = nextNode;
+
+
+
+
+}
 /*
 a -- b
 b -- c
