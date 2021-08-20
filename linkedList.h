@@ -8,7 +8,6 @@ struct node {
 
 typedef struct node node_t;
 
-
 void printLinkedList(node_t * head) {
     node_t * temporary = head;
     while (temporary != NULL) {
@@ -45,6 +44,14 @@ void append(node_t * head, char * value) {
     getLastNodePointer(head)->next = newNode;
 }
 
+void append_by_node_p(node_t *head, node_t *node_p) {
+    /*
+    WARNING
+    node_p->next MUST EQUAL NULL
+    */
+    getLastNodePointer(head)->next = node_p;
+}
+
 void prepend(node_t ** head_dp, char * value) {
     /*
     Here, head_dp is passed as a double pointer. The parameter is a pointer, pointing to the pointer of the head.
@@ -64,8 +71,7 @@ void prepend(node_t ** head_dp, char * value) {
 
 }
 
-
-node_t * get_node_p(node_t * head, int index) {
+node_t * get_node_p(node_t * head, unsigned int index) {
     if (index > len(head) - 1) return NULL;
     node_t * temp = head;
     int i = 0;
@@ -75,7 +81,7 @@ node_t * get_node_p(node_t * head, int index) {
     return temp;
 }
 
-void add(node_t * head, char * value, int atIndex) {
+void add(node_t * head, char * value, unsigned int atIndex) {
     /*
     Adds a new node with value char * value to the linked list, where its index with be int atIndex
 
@@ -84,9 +90,7 @@ void add(node_t * head, char * value, int atIndex) {
 
     head -> newNode -> 2 -> 3 -> 4
 
-
     The previous element will point to the newNode, and the newNode will point to the element it's replacing.
-
     */
 
     if (atIndex >= len(head) - 1) {
@@ -99,15 +103,39 @@ void add(node_t * head, char * value, int atIndex) {
         return;
     }
 
-
     // insert at one
     node_t * newNode = malloc(sizeof(node_t));
     newNode->value = value;
     node_t * replaced = get_node_p(head, atIndex);
     head->next = newNode;
     newNode->next = replaced;
-
 }
+
+
+node_t * reverse(node_t * head)
+    {
+        // Initialize current, previous and
+        // next pointers
+        node_t * current = head;
+        node_t * prev = NULL, *next = NULL;
+ 
+        while (current != NULL) {
+            // Store next
+            next = current->next;
+ 
+            // Reverse current node's pointer
+            current->next = prev;
+ 
+            // Move pointers one position ahead.
+            prev = current;
+            current = next;
+        }
+        head = prev;
+        return current;
+    }
+
+
+
 
 
 /*

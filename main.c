@@ -18,11 +18,13 @@ int main(void) {
     //append(head, "hi");
     //prepend(&head, "souse");
     add(head, "added element", 1);
-
-
-
-
     printLinkedList(head);
+
+
+    node_t * new_head = reverse(head);
+    printf("\n\n\n\n\n\n\n\n");
+    printLinkedList(new_head);
+
 
 
     getchar();
