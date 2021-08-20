@@ -17,10 +17,10 @@ node_t * makeLinkedList(char * value) {
 }
 
 
-void printLinkedList(node_t * head) {
+void printLinkedList(node_t * head, const char * format) {
     node_t * temporary = head;
     while (temporary != NULL) {
-        printf("%s\n", temporary->value);
+        printf(format, temporary->value);
         temporary = temporary->next;
     }
 }
