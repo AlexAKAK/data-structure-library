@@ -8,6 +8,15 @@ struct node {
 
 typedef struct node node_t;
 
+
+node_t * makeLinkedList(char * value) {
+    node_t * newNode = (node_t*)malloc(sizeof(node_t));
+    newNode->value = value;
+    newNode->next = NULL;
+    return newNode;
+}
+
+
 void printLinkedList(node_t * head) {
     node_t * temporary = head;
     while (temporary != NULL) {
@@ -152,12 +161,11 @@ void pop(node_t ** head_dp, unsigned int index) {
     }
 
     node_t * prevNode = get_node_p(*head_dp, index - 1);
+    free(get_node_p(*head_dp, index)); // dealocate the memory for the removed node
+
     node_t * nextNode = get_node_p(*head_dp, index + 1);
 
     prevNode->next = nextNode;
-
-
-
 
 }
 /*
