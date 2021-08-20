@@ -131,7 +131,7 @@ node_t * reverse(node_t * head)
             current = next;
         }
         head = prev;
-        return current;
+        return head;
     }
 
 

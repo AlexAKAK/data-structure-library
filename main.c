@@ -22,11 +22,10 @@ int main(void) {
 
 
     node_t * new_head = reverse(head);
-    printf("\n\n\n\n\n\n\n\n");
+    printf("\n");
+    printf("%p\n", new_head);
     printLinkedList(new_head);
 
 
-
-    getchar();
     return 0;
 }
