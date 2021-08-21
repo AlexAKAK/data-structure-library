@@ -20,6 +20,17 @@ dll_node * make_dll_node(void * value) {
 }
 
 
+dll_node * dll_get_node(dll_node * head, unsigned int index) {
+    if (index > dll_len(head) - 1) return NULL;
+    dll_node * temp = head;
+    int i = 0;
+    for (i; i < index; i++) {
+        temp = temp->next;
+    }
+    return temp;
+}
+
+
 dll_node * getTail(dll_node * np) {
     dll_node *temp = np;
 
@@ -82,28 +93,30 @@ void dll_print(dll_node * np, const char * format) {
     }
 }
 
-dll_node * dll_reverse(dll_node * head) {
-    /*
-    NULL - a - b - c - d - e - NULL
-    NULL - e - d - c - b - a - NULL
-    */
+dll_node * dll_reverse(dll_node * head)
+    // This is the standard procedure for reversing a normal linked list.
+    {
+        // Initialize current, previous and
+        // next pointers
+        dll_node * current = head;
+        dll_node * prev = NULL, *next = NULL;
+ 
+        while (current != NULL) {
+            // Store next
+            next = current->next;
+ 
+            // Reverse current node's pointer
+            current->next = prev;
+ 
+            // Move pointers one position ahead.
+            prev = current;
+            current = next;
+        }
+        head = prev;
+        // assign the prev pointers
+
+        
 
 
-
-
-
-    dll_node * temp = getTail(head);
-    dll_node * new_head = getTail(head);
-    new_head->prev = NULL;
-    new_head->next = NULL;
-    temp->next = temp;
-    unsigned int length = dll_len(head);
-    while (temp != NULL) {
-        dll_append_by_node(head, temp);
+        return head;
     }
-
-
-
-
-
-}
