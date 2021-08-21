@@ -8,13 +8,14 @@
 int main(void) {
     dll_node * head = make_dll_node("0");
 
-    dll_add(head, "1");
-    dll_add(head, "2");
-    dll_add(head, "3");
-    dll_add(head, "4");
-    dll_add(head, "5");
-    dll_add(head, "6");
-    dll_add(head, "7");
+    dll_append(head, "1");
+    dll_append(head, "2");
+    dll_append(head, "3");
+    dll_append(head, "4");
+    dll_append(head, "5");
+    dll_append(head, "6");
+    dll_append(head, "7");
+    dll_prepend(&head, "prepended element");
     dll_print(head, "%s");
 
 
